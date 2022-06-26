@@ -143,7 +143,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
 
 
 #navbarNavDropdown .blue-button-outline {
-  outline: #3038F6;
+  outline: auto;
   color: #3038F6;
   font-family: 'Poppins';
   font-style: normal;
@@ -195,67 +195,7 @@ background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
   border-color: none;
 }
 
-#banner h1 {
-  font-family: 'Poppins';
-  /* font-size: 80px; */
-  font-weight: bold;
 
-  background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-}
-#bottombanner h2{
-  font-family: 'Poppins';
-font-style: normal;
-font-weight: 600;
-font-size: 48px;
-line-height: 130%;
-}
-#bottombanner p{
-  font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 18px;
-line-height: 160%;
-}
-
-#banner .blue-button {
-  background-color: #3038F6;
-  width: 224px;
-  height: 60.48px;
-  left: 36px;
-  top: 7px;
-  border-radius: 7px;
-  margin-right: 21px;
-  position: relative;
-}
-
-#banner h5 {
-  font-family: 'Poppins';
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 33px;
-  color: #818797;
-
-}
-#banner .sub-heading {
-  font-family: 'Poppins';
-  font-size: 44px;
-  font-weight: 400;
-  line-height: 55px;
-
-
-}
-
-#banner .managment{
-  font-family: 'Poppins';
-  font-size: 60px;
-  font-weight: 400;
-  line-height: 102px;
-  color: #818797;
-
-}
 
 #features .h3 {
   font-family: 'Poppins';
@@ -317,7 +257,11 @@ line-height: 160%;
 
 }
 
-
+#tracking .btn-outline-secondary:hover{
+  color: #fff;
+  background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
+  border-color: linear-gradient(to right, #3038F6 0%, #30DFF6 100%)
+}
 #tracking .blue-button {
   background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
   outline: none;
@@ -591,6 +535,74 @@ line-height: 140%;
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   
+  #inventory .small-image {
+    position: absolute;
+    left: 40%;
+    top: 59%;
+}
+  #banner h1 {
+    font-family: 'Poppins';
+    /* font-size: 80px; */
+    font-weight: bold;
+  
+    background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  }
+  #bottombanner h2{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 0%;
+  }
+
+  #bottombanner p{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 160%;
+  }
+  
+  #banner .blue-button {
+    background-color: #3038F6;
+    width: 224px;
+    height: 60.48px;
+    left: 36px;
+    top: 7px;
+    border-radius: 7px;
+    margin-right: 21px;
+    position: relative;
+  }
+  
+  #banner h5 {
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    color: #818797;
+  
+  }
+  #banner .sub-heading {
+    font-family: 'Poppins';
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 55px;
+  
+  
+  }
+  
+  #banner .managment{
+    font-family: 'Poppins';
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 102px;
+    color: #818797;
+  
+  }
+  
 .add-collection-button{
     width: 158px;
     height: 41px;
@@ -748,6 +760,7 @@ line-height: 140%;
   left: 274px;
   top: 197px;
   border-radius: 8.58696px;
+  cursor: pointer;
   }
   .custom-search-bar{
     width: 69%;
@@ -992,8 +1005,14 @@ height: 36px;
     padding-right: 0px;
     padding-left:0px;
  }
+ #bottombanner .blue-button {
+  background-color: white;
+  width: 122px;
+  height: 29px;
+  font-size: 11px;
+}
   .card-img-overlay {
-    top: 0px;
+    top: 4px;
   }
   #tracking .btn-outline-dark {
     outline: black;
@@ -1034,9 +1053,82 @@ line-height: 162%;
   
   }
 }
-
+@media only screen and (max-width: 290px) {
+  #inventory .small-image {
+    position: absolute;
+    left: 33%;
+    top: 50%;
+}
+}
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  
+  #inventory .small-image {
+    position: absolute;
+    left: 43%;
+    top: 72%;
+}
+  #banner h1 {
+    font-family: 'Poppins';
+    /* font-size: 80px; */
+    font-weight: bold;
+  
+    background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  }
+  #bottombanner h2{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 130%;
+  }
+  #bottombanner p{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 147%;
+  }
+  
+  #banner .blue-button {
+    background-color: #3038F6;
+    width: 224px;
+    height: 60.48px;
+    left: 36px;
+    top: 7px;
+    border-radius: 7px;
+    margin-right: 21px;
+    position: relative;
+  }
+  
+  #banner h5 {
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    color: #818797;
+  
+  }
+  #banner .sub-heading {
+    font-family: 'Poppins';
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 55px;
+  
+  
+  }
+  
+  #banner .managment{
+    font-family: 'Poppins';
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 102px;
+    color: #818797;
+  
+  }
   .add-collection-button{
     width: 158px;
     height: 41px;
@@ -1195,6 +1287,7 @@ line-height: 162%;
   left: 274px;
   top: 197px;
   border-radius: 8.58696px;
+  cursor: pointer;
   }
   .custom-search-bar{
     width: 69%;
@@ -1435,7 +1528,8 @@ line-height: 162%;
     /* flexDirection:'row'; */
   }
   .card-img-overlay {
-    top: 0px;
+    top: -42px;
+  
   }
   #tracking .btn-outline-dark {
     outline: black;
@@ -1489,6 +1583,72 @@ line-height: 162%;
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+  #inventory .small-image {
+    position: absolute;
+    left: 45%;
+    top: 80%;
+}
+  #banner h1 {
+    font-family: 'Poppins';
+    /* font-size: 80px; */
+    font-weight: bold;
+  
+    background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  }
+  #bottombanner h2{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 130%;
+  }
+  #bottombanner p{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  }
+  
+  #banner .blue-button {
+    background-color: #3038F6;
+    width: 224px;
+    height: 60.48px;
+    left: 36px;
+    top: 7px;
+    border-radius: 7px;
+    margin-right: 21px;
+    position: relative;
+  }
+  
+  #banner h5 {
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    color: #818797;
+  
+  }
+  #banner .sub-heading {
+    font-family: 'Poppins';
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 55px;
+  
+  
+  }
+  
+  #banner .managment{
+    font-family: 'Poppins';
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 102px;
+    color: #818797;
+  
+  }
   .add-collection-button{
     width: 158px;
     height: 41px;
@@ -1635,6 +1795,7 @@ line-height: 162%;
   left: 274px;
   top: 197px;
   border-radius: 8.58696px;
+  cursor: pointer;
   }
   .custom-search-bar{
     width: 69%;
@@ -1875,7 +2036,7 @@ line-height: 162%;
     /* flexDirection:'row'; */
   }
   .card-img-overlay {
-    top: -54px;
+    top: -9px;
   }
 
   #tracking .btn-outline-dark {
@@ -1932,6 +2093,72 @@ line-height: 162%;
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  #inventory .small-image {
+    position: absolute;
+    left: 40%;
+    top: 62%;
+}
+  #banner h1 {
+    font-family: 'Poppins';
+    /* font-size: 80px; */
+    font-weight: bold;
+  
+    background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  }
+  #bottombanner h2{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 130%;
+  }
+  #bottombanner p{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  }
+  
+  #banner .blue-button {
+    background-color: #3038F6;
+    width: 224px;
+    height: 60.48px;
+    left: 36px;
+    top: 7px;
+    border-radius: 7px;
+    margin-right: 21px;
+    position: relative;
+  }
+  
+  #banner h5 {
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    color: #818797;
+  
+  }
+  #banner .sub-heading {
+    font-family: 'Poppins';
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 55px;
+  
+  
+  }
+  
+  #banner .managment{
+    font-family: 'Poppins';
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 102px;
+    color: #818797;
+  
+  }
   .add-collection-button{
     width: 158px;
     height: 41px;
@@ -2325,7 +2552,7 @@ line-height: 162%;
     /* flexDirection:'row'; */
   }
   .card-img-overlay {
-    top: 100px;
+    top: 33px;
   }
 
   #tracking .blue-button {
@@ -2383,6 +2610,72 @@ line-height: 162%;
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 /* hello */
 @media only screen and (min-width: 1054px) {
+  #inventory .small-image {
+    position: absolute;
+    left: 42%;
+    top: 61%;
+}
+  #banner h1 {
+    font-family: 'Poppins';
+    /* font-size: 80px; */
+    font-weight: bold;
+  
+    background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  }
+  #bottombanner h2{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 130%;
+  }
+  #bottombanner p{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  }
+  
+  #banner .blue-button {
+    background-color: #3038F6;
+    width: 224px;
+    height: 60.48px;
+    left: 36px;
+    top: 7px;
+    border-radius: 7px;
+    margin-right: 21px;
+    position: relative;
+  }
+  
+  #banner h5 {
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    color: #818797;
+  
+  }
+  #banner .sub-heading {
+    font-family: 'Poppins';
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 55px;
+  
+  
+  }
+  
+  #banner .managment{
+    font-family: 'Poppins';
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 102px;
+    color: #818797;
+  
+  }
   .add-collection-button{
   
     width: 158px;
@@ -2535,6 +2828,7 @@ line-height: 162%;
   left: 274px;
   top: 197px;
   border-radius: 8.58696px;
+  cursor: pointer;
   }
   .custom-search-bar{
     width: 69%;
@@ -2777,7 +3071,7 @@ color: #818797;
   /* flexDirection:'row'; */
 }
   .card-img-overlay {
-    top: 130px;
+    top: 36px;
   }
 
   #tracking .blue-button {
@@ -2832,6 +3126,72 @@ color: #818797;
   }
 }
 @media only screen and (min-width: 1200px) {
+  #inventory .small-image {
+    position: absolute;
+    left: 40%;
+    top: 62%;
+}
+  #banner h1 {
+    font-family: 'Poppins';
+    /* font-size: 80px; */
+    font-weight: bold;
+  
+    background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  }
+  #bottombanner h2{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 130%;
+  }
+  #bottombanner p{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  }
+  
+  #banner .blue-button {
+    background-color: #3038F6;
+    width: 224px;
+    height: 60.48px;
+    left: 36px;
+    top: 7px;
+    border-radius: 7px;
+    margin-right: 21px;
+    position: relative;
+  }
+  
+  #banner h5 {
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    color: #818797;
+  
+  }
+  #banner .sub-heading {
+    font-family: 'Poppins';
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 55px;
+  
+  
+  }
+  
+  #banner .managment{
+    font-family: 'Poppins';
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 102px;
+    color: #818797;
+  
+  }
   .add-collection-button{
     width: 158px;
     height: 41px;
@@ -2981,6 +3341,7 @@ border-radius: 5px;
   left: 274px;
   top: 197px;
   border-radius: 8.58696px;
+  cursor: pointer;
   }
   .custom-search-bar{
     width: 69%;
@@ -3276,6 +3637,72 @@ color: #818797;
   }
 }
 @media only screen and (min-width: 1130px) {
+  #inventory .small-image {
+    position: absolute;
+    left: 44%;
+    top: 76%;
+}
+  #banner h1 {
+    font-family: 'Poppins';
+    /* font-size: 80px; */
+    font-weight: bold;
+  
+    background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  }
+  #bottombanner h2{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 130%;
+  }
+  #bottombanner p{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  }
+  
+  #banner .blue-button {
+    background-color: #3038F6;
+    width: 224px;
+    height: 60.48px;
+    left: 36px;
+    top: 7px;
+    border-radius: 7px;
+    margin-right: 21px;
+    position: relative;
+  }
+  
+  #banner h5 {
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    color: #818797;
+  
+  }
+  #banner .sub-heading {
+    font-family: 'Poppins';
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 55px;
+  
+  
+  }
+  
+  #banner .managment{
+    font-family: 'Poppins';
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 102px;
+    color: #818797;
+  
+  }
   .add-collection-button{
     width: 158px;
     height: 41px;
@@ -3426,6 +3853,7 @@ color: #818797;
     left: 274px;
     top: 197px;
     border-radius: 8.58696px;
+    cursor: pointer;
   }
   .custom-search-bar{
     width: 69%;
@@ -3721,17 +4149,83 @@ color: #818797;
   }
 }
 @media only screen and (min-width: 1408px) {
+  #inventory .small-image {
+    position: absolute;
+    left: 45%;
+    top: 79%;
+}
+  #banner h1 {
+    font-family: 'Poppins';
+    /* font-size: 80px; */
+    font-weight: bold;
+  
+    background: linear-gradient(to right, #3038F6 0%, #30DFF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+  }
+  #bottombanner h2{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 130%;
+  }
+  #bottombanner p{
+    font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  }
+  
+  #banner .blue-button {
+    background-color: #3038F6;
+    width: 224px;
+    height: 60.48px;
+    left: 36px;
+    top: 7px;
+    border-radius: 7px;
+    margin-right: 21px;
+    position: relative;
+  }
+  
+  #banner h5 {
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 33px;
+    color: #818797;
+  
+  }
+  #banner .sub-heading {
+    font-family: 'Poppins';
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 55px;
+  
+  
+  }
+  
+  #banner .managment{
+    font-family: 'Poppins';
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 102px;
+    color: #818797;
+  
+  }
   .add-collection-button{
     width: 166px;
     height: 41px;
-    /* left: 958px; */
+    left: 929px;
     top: 110px;
     background: #3038F6;
     border-radius: 5px;
     color: white;
     outline: transparent;
     border: transparent;
-    margin-left: 189px;
+    margin-left: 166px;
 }
 
   #smart-alert-collection3 h2 {
@@ -3851,7 +4345,7 @@ color: #818797;
     margin-top: 2%;
   }
   .toggle-div{
-    margin-left: 25px;
+    margin-left: 19px;
   }
   .bule-toggle-button {
     width: 365px;
@@ -3873,10 +4367,11 @@ color: #818797;
   left: 274px;
   top: 197px;
   border-radius: 8.58696px;
+  cursor: pointer;
   }
   .custom-search-bar{
-    width: 69%;
-      margin-left: 100px;
+    width: 65%;
+    margin-left: 100px;
   }
   #smart-alert-collection4 .box{
     width: 381px;
@@ -4675,11 +5170,11 @@ line-height: 150%;
 
 
 
-#inventory .small-image{
+/* #inventory .small-image{
   position: absolute;
   left: 46%;
   top: 80%;
-}
+} */
 #inventory .big-image{
   position: relative;
 }

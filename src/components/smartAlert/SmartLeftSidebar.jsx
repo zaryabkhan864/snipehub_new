@@ -84,7 +84,7 @@ const SmartLeftSidebar = () => {
                             {topCollection && topCollection?.map((items, key) => (
                                 <div className='d-flex my-1 custom-card'>
                                     <div>
-                                        <img src={items.image} className="rounded-start img-fluid w-100" alt="..." />
+                                        <img src={items.image} className="rounded-start img-fluid w-100" style={{"cursor":"pointer"}} alt="..." />
                                     </div>
 
                                     <div className=' mx-auto text-start ms-md-2 ms-sm-2 ms-1'>
@@ -93,7 +93,7 @@ const SmartLeftSidebar = () => {
                                         <p className='sub-heading'>{items.date}</p>
                                     </div>
                                     <div>
-                                        <div className='text-end h-25 mb-2'  style={{"cursor":"pointer"}}>
+                                        <div className='text-end h-25 mb-2'  >
 
                                         <img src="/assets/images/cross.png" className="img-fluid" alt="..." />
                                         </div>

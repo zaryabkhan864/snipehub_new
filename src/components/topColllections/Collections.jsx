@@ -101,13 +101,13 @@ const Collections = () => {
     }
     return (
         <React.Fragment>
-    <div id="smart-alert-collection" className="container top-collection-container ">
+            <div id="smart-alert-collection" className="container top-collection-container ">
                 <div className="row mb-5">
-                <div className="col-lg-6 col-md-12 col-sm-12 col-12 text-start mt-lg-0 mt-sm-5">
-                <h3>Top Collection</h3>
+                    <div className="col-lg-6 col-md-12 col-sm-12 col-12 text-start mt-lg-0 mt-sm-5">
+                        <h3>Top Collection</h3>
                     </div>
                     <div className="col-lg-5 col-md-12 col-sm-12 col-12 d-flex justify-lg-content-end justify-md-content-start justify-sm-content-start toggle-div">
-                    <div class="btn-group border p-1 rounded  bule-toggle-button" role="group" aria-label="Basic radio toggle button group">
+                        <div class="btn-group border p-1 rounded  bule-toggle-button" role="group" aria-label="Basic radio toggle button group">
                             <input type="radio" class="btn-check" name="btnradio" id="btnradio1" value="1" checked={blue == 1} onClick={today} />
                             <label class="btn btn-outline-primary" for="btnradio1">Today</label>
 
@@ -118,7 +118,7 @@ const Collections = () => {
                             <label class="btn btn-outline-primary" for="btnradio3">Last 30 Days</label>
                         </div>
                     </div>
-                   
+
                     <div className="col-12 mt-3 d-none d-lg-block  mb-5">
                         <div className="row d-flex justify-content-center">
                             {topCollections && topCollections?.map((items, key) => (
@@ -181,22 +181,23 @@ const Collections = () => {
 
                         </div>
                     </div> */}
-                    <div className="col-12 d-none d-lg-block">
+                    <div className="col-12 d-none d-lg-block ">
+
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                                </li>
-                                <li class="page-item"  active={check == 1}><a class="page-link" href="#"  >1</a></li>
-                                <li class="page-item" active={check == 2}><a class="page-link" href="#"  >2</a></li>
-                                <li class="page-item" active={check == 3}><a class="page-link" href="#"  onClick={check3}>3</a></li>
                                 <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true" style={{ "border": "none" }}>Previous</a>
+                                </li>
+                                <li class="page-item "><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" style={{ "border": "none" }}>Next</a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
-            
+
 
 
                     <div className="col-12 my-5 d-lg-none d-sm-block">

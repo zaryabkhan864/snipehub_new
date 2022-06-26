@@ -106,7 +106,7 @@ const Collections = () => {
                 <div className="col-lg-6 col-md-12 col-sm-12 col-12 text-start mt-lg-0 mt-sm-5">
                 <h3>Watchlist</h3>
                     </div>
-                    <div className="col-lg-5 col-md-12 col-sm-12 col-12 d-flex justify-lg-content-end justify-md-content-start justify-sm-content-start px-0">
+                    <div className="col-lg-5 col-md-12 col-sm-12 col-12 d-flex justify-lg-content-end justify-md-content-start justify-sm-content-start px-0 ms-auto">
                   <button className='add-collection-button' onClick={goToNextPage}>+ Add collection</button>
                     </div>
                    
@@ -172,22 +172,22 @@ const Collections = () => {
 
                         </div>
                     </div> */}
-                    <div className="col-12 d-none d-lg-block">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                                </li>
-                                <li class="page-item"  active={check == 1}><a class="page-link" href="#"  >1</a></li>
-                                <li class="page-item" active={check == 2}><a class="page-link" href="#"  >2</a></li>
-                                <li class="page-item" active={check == 3}><a class="page-link" href="#"  onClick={check3}>3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-            
+     <div className="col-12 d-none d-lg-block ">
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true" style={{ "border": "none" }}>Previous</a>
+        </li>
+        <li class="page-item "><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#" style={{ "border": "none" }}>Next</a>
+        </li>
+    </ul>
+</nav>
+</div>
 
 
                     <div className="col-12 my-5 d-lg-none d-sm-block">

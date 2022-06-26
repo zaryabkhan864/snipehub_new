@@ -20,6 +20,9 @@ import TopCollection2 from './topColllections/secondViews/TopCollection2';
 // import DashboardCollections from './watchlist/dashboard/DashboardCollections';
 import Inventory from './topColllections/thirdView/Inventory';
 import WatchListCollections from './watchlist/WatchListCollections';
+import Dashboard from './dashboard/Dashboard';
+import ErrorPage from './ErrorPage';
+import Inventory2 from './topColllections/thirdView/Inventory2';
 
 
 const AuthRoute = () => {
@@ -50,7 +53,7 @@ const AuthRoute = () => {
                         <MainLayout />
                         </CheckAuthetication>
                     }>
-                        <Route index  element={<DashboardCollections />} />
+                        <Route index  element={<Dashboard />} />
                         
                         <Route path='nft' element={<MyNftCollections/>} />
                         <Route path='smartalert' element={<SmartCollections/>} />
@@ -63,10 +66,12 @@ const AuthRoute = () => {
 
                         <Route path='watchlist' element={<WatchListCollections/>} />
                         <Route path='addcollection' element={<DashboardCollections/>} />
-                        <Route path='inventory' element={<Inventory/>} />
+                        <Route path='inventory' element={<Inventory2/>} />
+                        {/* <Route path='inventory' element={<Inventory/>} /> */}
               
                     </Route>
-                    <Route path='*' element={<div><p>ERROR PAGE</p></div>} />
+                    <Route path='*' element={<ErrorPage/>} />
+                    {/* <Route path='*' element={<div><p>ERROR PAGE</p></div>} /> */}
 
                 </Routes>
             </div>

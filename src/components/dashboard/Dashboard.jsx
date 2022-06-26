@@ -7,7 +7,7 @@ import SubLayout from './SubLayout'
 
 
 
-const DashboardCollections = () => {
+const Dashboard = () => {
   return (
     <>
       {/* <Navbar /> */}
@@ -25,4 +25,4 @@ const DashboardCollections = () => {
   )
 }
 
-export default DashboardCollections
+export default Dashboard

@@ -62,6 +62,14 @@ const Inventory = () => {
         { "image": "/assets/images/rsmall2.png", "name": "Saari.eth" },
         { "image": "/assets/images/rsmall3.png", "name": "Saari.eth" },
         { "image": "/assets/images/rsmall1.png", "name": "Saari.eth" },
+        { "image": "/assets/images/rsmall3.png", "name": "Saari.eth" },
+        { "image": "/assets/images/rsmall1.png", "name": "Saari.eth" },
+        { "image": "/assets/images/rsmall2.png", "name": "Saari.eth" },
+        { "image": "/assets/images/rsmall3.png", "name": "Saari.eth" },
+        { "image": "/assets/images/rsmall2.png", "name": "Saari.eth" },
+        { "image": "/assets/images/rsmall3.png", "name": "Saari.eth" },
+        { "image": "/assets/images/rsmall1.png", "name": "Saari.eth" },
+
     ]
     const [topCollections, setTopCollections] = useState(topCollection)
     const today = () => {
@@ -158,19 +166,19 @@ const Inventory = () => {
                     {/* this componet is for mobile screen -- tag on */}
                     <div className="col-12 big-image">
                         <div>
-                        <img src="/assets/images/inventorybigimage.png" className=" img-fluid" alt="..." />
+                            <img src="/assets/images/inventorybigimage.png" className=" img-fluid" alt="..." />
                         </div>
                         <div className='small-image'>
-                        <img src="/assets/images/inventoryroundimage.png" className=" img-fluid" alt="..." />
+                            <img src="/assets/images/inventoryroundimage.png" className=" img-fluid" alt="..." />
                         </div>
-         
-         
+
+
                     </div>
-                 
+
 
                     <div className="col-12 my-5 pt-sm-5">
-                    <div className="row ">
-                            <div className="col-12"><h3>Rare Land NFT</h3></div>
+                        <div className="row ">
+                            <div className="col-12"><h3>Rare </h3></div>
                             <div className="col-12"><span>Welcome to Rare Land. Rare Land NFTs are the gateway to unlock our music game with 100+ songs and battle</span></div>
                             <div className="col-12"><h3>Traits</h3></div>
                             {/* <div className="col-6">
@@ -193,17 +201,18 @@ const Inventory = () => {
 
                         </div>
                     </div>
-                    <div className="col-12">
+                    <div className="col-12 d-none d-lg-block ">
+
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true" style={{ "border": "none" }}>Previous</a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item "><a class="page-link" href="#">1</a></li>
                                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                                 <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
+                                    <a class="page-link" href="#" style={{ "border": "none" }}>Next</a>
                                 </li>
                             </ul>
                         </nav>
