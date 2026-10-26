@@ -120,7 +120,7 @@ function Notifications() {
         <div className="relative" ref={ref}>
             <button type="button" className="icon-btn" onClick={toggle} aria-label={`Notifications${unread ? `, ${unread} unread` : ''}`} aria-expanded={open}>
                 <FiBell />
-                {unread > 0 && <span className="badge">{unread}</span>}
+                {unread > 0 && <span key={unread} className="badge pop">{unread}</span>}
             </button>
             {open && (
                 <div className="popover notes">
@@ -256,7 +256,7 @@ export default function AppLayout() {
                         {!state.wallet.connected && location.pathname !== '/settings' && (
                             <div className="banner-note">Your wallet is disconnected. <Link to="/nft">Connect it</Link> to see your NFTs.</div>
                         )}
-                        <Outlet />
+                        <div key={location.pathname} className="page-enter"><Outlet /></div>
                     </main>
                     <AlertsPanel />
                 </div>

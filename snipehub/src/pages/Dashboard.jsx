@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { COLLECTIONS, getCollection } from '../data/collections';
 import { useStore, useFloors } from '../store/AppStore';
 import { price, compact } from '../lib/format';
-import { AreaChart, Change, CollectionCell, PageHeader, Sparkline, Empty } from '../ui';
+import { AreaChart, Change, CollectionCell, PageHeader, Sparkline, Empty, LivePrice } from '../ui';
 
 const days = ['30d', '25d', '20d', '15d', '10d', '5d', 'Today'];
 
@@ -51,7 +51,7 @@ export default function Dashboard() {
                                     {watch.slice(0, 6).map((c) => (
                                         <tr key={c.id}>
                                             <td><CollectionCell c={c} to={`/collection/${c.id}`} /></td>
-                                            <td className="num">{price(floors[c.id])}</td>
+                                            <td className="num"><LivePrice value={floors[c.id]}>{price(floors[c.id])}</LivePrice></td>
                                             <td className="num"><Change value={c.change.day} /></td>
                                             <td className="hide-sm spark-cell"><Sparkline data={c.history.slice(-8)} /></td>
                                         </tr>
@@ -68,7 +68,7 @@ export default function Dashboard() {
                         {movers.map((c) => (
                             <li key={c.id}>
                                 <CollectionCell c={c} to={`/collection/${c.id}`} />
-                                <span className="mover-right"><span>{price(floors[c.id])}</span><Change value={c.change.day} /></span>
+                                <span className="mover-right"><LivePrice value={floors[c.id]}>{price(floors[c.id])}</LivePrice><Change value={c.change.day} /></span>
                             </li>
                         ))}
                     </ul>

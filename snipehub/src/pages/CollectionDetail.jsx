@@ -4,7 +4,7 @@ import { FiStar, FiBell, FiArrowLeft } from 'react-icons/fi';
 import { getCollection } from '../data/collections';
 import { useStore, useFloors } from '../store/AppStore';
 import { compact, price } from '../lib/format';
-import { AreaChart, Change, Empty, PeriodTabs, SearchInput, Verified } from '../ui';
+import { AreaChart, Change, Empty, PeriodTabs, SearchInput, Verified, LivePrice } from '../ui';
 import NotFound from './NotFound';
 
 const RANGES = [
@@ -56,7 +56,7 @@ export default function CollectionDetail() {
             </section>
 
             <div className="stat-grid">
-                <div className="stat"><small>Floor price</small><strong>{price(now)}</strong><Change value={c.change.day} /> <span className="muted">24h</span></div>
+                <div className="stat"><small>Floor price</small><strong><LivePrice value={now}>{price(now)}</LivePrice></strong><Change value={c.change.day} /> <span className="muted">24h</span></div>
                 <div className="stat"><small>Volume (30d)</small><strong>{compact(c.volumes.month)} CRO</strong><Change value={c.volumeChange.month} /></div>
                 <div className="stat"><small>Items</small><strong>{compact(c.supply)}</strong><span className="muted">{compact(c.owners)} owners</span></div>
                 <div className="stat"><small>Unique owners</small><strong>{Math.round((c.owners / c.supply) * 100)}%</strong><span className="muted">of supply</span></div>

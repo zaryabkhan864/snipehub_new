@@ -4,7 +4,7 @@ import { FiPlus, FiCheck, FiTrash2, FiBell } from 'react-icons/fi';
 import { COLLECTIONS, getCollection } from '../data/collections';
 import { useStore, useFloors } from '../store/AppStore';
 import { compact, price } from '../lib/format';
-import { Change, Empty, PageHeader, SearchInput, Sparkline, Verified } from '../ui';
+import { Change, Empty, PageHeader, SearchInput, Sparkline, Verified, LivePrice } from '../ui';
 
 export function Watchlist() {
     const { state, dispatch, toast } = useStore();
@@ -24,7 +24,7 @@ export function Watchlist() {
                                 <img src={c.avatar} alt="" width="88" height="88" loading="lazy" />
                                 <div>
                                     <strong>{c.name} {c.verified && <Verified />}</strong>
-                                    <span className="row-between"><span>Floor: {price(floors[c.id])}</span><Change value={c.change.day} /></span>
+                                    <span className="row-between"><span>Floor: <LivePrice value={floors[c.id]}>{price(floors[c.id])}</LivePrice></span><Change value={c.change.day} /></span>
                                     <span className="row-between muted"><span>Volume: {compact(c.volumes.day)}</span><Change value={c.volumeChange.day} /></span>
                                 </div>
                             </Link>
@@ -68,7 +68,7 @@ export function AddCollection() {
                                 <img src={c.avatar} alt="" width="88" height="88" loading="lazy" />
                                 <div>
                                     <strong>{c.name} {c.verified && <Verified />}</strong>
-                                    <span className="row-between"><span>Floor: {price(floors[c.id])}</span><Change value={c.change.day} /></span>
+                                    <span className="row-between"><span>Floor: <LivePrice value={floors[c.id]}>{price(floors[c.id])}</LivePrice></span><Change value={c.change.day} /></span>
                                     <span className="add-state">{on ? <><FiCheck /> In watchlist</> : <><FiPlus /> Add</>}</span>
                                 </div>
                             </button>

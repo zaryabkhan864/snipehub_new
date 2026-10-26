@@ -4,7 +4,7 @@ import { FiStar } from 'react-icons/fi';
 import { COLLECTIONS } from '../data/collections';
 import { useStore, useFloors } from '../store/AppStore';
 import { compact, price, PERIODS } from '../lib/format';
-import { Change, CollectionCell, PageHeader, PeriodTabs, SearchInput, Sparkline, Empty } from '../ui';
+import { Change, CollectionCell, PageHeader, PeriodTabs, SearchInput, Sparkline, Empty, LivePrice } from '../ui';
 
 const SORTS = [
     { key: 'volume', label: 'Sales volume' },
@@ -69,7 +69,7 @@ export default function TopCollections() {
                                     <tr key={c.id} onClick={() => navigate(`/collection/${c.id}`)}>
                                         <td className="rank">{i + 1}</td>
                                         <td><CollectionCell c={c} to={`/collection/${c.id}`} /></td>
-                                        <td className="num">{price(floors[c.id])}</td>
+                                        <td className="num"><LivePrice value={floors[c.id]}>{price(floors[c.id])}</LivePrice></td>
                                         <td className="num"><Change value={c.change[period]} /></td>
                                         <td className="num hide-sm">{compact(c.volumes[period])} <Change value={c.volumeChange[period]} className="block" /></td>
                                         <td className="num hide-md">{compact(c.owners)}</td>

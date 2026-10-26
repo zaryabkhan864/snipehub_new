@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { COLLECTIONS } from '../data/collections';
 import { useFloors } from '../store/AppStore';
 import { compact, price, PERIODS } from '../lib/format';
-import { AreaChart, Change, CollectionCell, PageHeader, PeriodTabs } from '../ui';
+import { AreaChart, Change, CollectionCell, PageHeader, PeriodTabs, LivePrice } from '../ui';
 
 export default function MarketOverview() {
     const [period, setPeriod] = useState('week');
@@ -48,7 +48,7 @@ export default function MarketOverview() {
                     <div className="card-head"><h2>Top gainers</h2></div>
                     <ul className="mover-list">
                         {gainers.map((c) => (
-                            <li key={c.id}><CollectionCell c={c} to={`/collection/${c.id}`} /><span className="mover-right"><span>{price(floors[c.id])}</span><Change value={c.change[period]} /></span></li>
+                            <li key={c.id}><CollectionCell c={c} to={`/collection/${c.id}`} /><span className="mover-right"><LivePrice value={floors[c.id]}>{price(floors[c.id])}</LivePrice><Change value={c.change[period]} /></span></li>
                         ))}
                     </ul>
                 </section>
@@ -56,7 +56,7 @@ export default function MarketOverview() {
                     <div className="card-head"><h2>Top losers</h2></div>
                     <ul className="mover-list">
                         {losers.map((c) => (
-                            <li key={c.id}><CollectionCell c={c} to={`/collection/${c.id}`} /><span className="mover-right"><span>{price(floors[c.id])}</span><Change value={c.change[period]} /></span></li>
+                            <li key={c.id}><CollectionCell c={c} to={`/collection/${c.id}`} /><span className="mover-right"><LivePrice value={floors[c.id]}>{price(floors[c.id])}</LivePrice><Change value={c.change[period]} /></span></li>
                         ))}
                     </ul>
                 </section>

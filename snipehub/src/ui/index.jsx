@@ -1,4 +1,4 @@
-import React, { useId } from 'react';
+import React, { useEffect, useId, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiSearch, FiX, FiBell, FiCheckCircle } from 'react-icons/fi';
 import { pct } from '../lib/format';
@@ -77,8 +77,8 @@ export function AreaChart({ data, height = 180, labels, className = '' }) {
                         <stop offset="100%" stopColor={up ? '#3038F6' : '#E5484D'} stopOpacity="0" />
                     </linearGradient>
                 </defs>
-                <path d={area} fill={`url(#g${id})`} />
-                <path d={line} fill="none" stroke={up ? '#3038F6' : '#E5484D'} strokeWidth="2.5" vectorEffect="non-scaling-stroke" strokeLinejoin="round" />
+                <path d={area} fill={`url(#g${id})`} className="chart-area" />
+                <path d={line} fill="none" stroke={up ? '#3038F6' : '#E5484D'} strokeWidth="2.5" vectorEffect="non-scaling-stroke" strokeLinejoin="round" pathLength="1" className="chart-line" />
             </svg>
             {labels && (
                 <div className="chart-labels">{labels.map((l) => <span key={l}>{l}</span>)}</div>
@@ -111,4 +111,40 @@ export function Toasts() {
             ))}
         </div>
     );
+}
+
+// Shows a price and briefly flashes green / red when it goes up / down (live market feel)
+export function LivePrice({ value, children }) {
+    const prev = useRef(value);
+    const [dir, setDir] = useState('');
+    useEffect(() => {
+        if (prev.current === value) return undefined;
+        setDir(value > prev.current ? 'flash-up' : 'flash-down');
+        prev.current = value;
+        const t = window.setTimeout(() => setDir(''), 1100);
+        return () => window.clearTimeout(t);
+    }, [value]);
+    return <span className={`live ${dir}`}>{children}</span>;
+}
+
+// Adds the class "in" to every [data-reveal] element inside `ref` when it scrolls into view.
+// Works for elements added later too (tabs, filters).
+export function useReveal(ref) {
+    useEffect(() => {
+        const root = ref.current;
+        if (!root) return undefined;
+        const show = (el) => el.classList.add('in');
+        if (!('IntersectionObserver' in window)) {
+            root.querySelectorAll('[data-reveal]').forEach(show);
+            return undefined;
+        }
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((e) => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        const watch = () => root.querySelectorAll('[data-reveal]:not(.in)').forEach((el) => io.observe(el));
+        watch();
+        const mo = new MutationObserver(watch);
+        mo.observe(root, { childList: true, subtree: true });
+        return () => { io.disconnect(); mo.disconnect(); };
+    }, [ref]);
 }

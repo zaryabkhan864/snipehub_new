@@ -4,7 +4,7 @@ import { FiArrowLeft, FiMinus, FiPlus } from 'react-icons/fi';
 import { COLLECTIONS, getCollection } from '../data/collections';
 import { useStore, useFloors, describeAlert } from '../store/AppStore';
 import { price } from '../lib/format';
-import { Change, Empty, PageHeader, SearchInput, Verified } from '../ui';
+import { Change, Empty, PageHeader, SearchInput, Verified, LivePrice } from '../ui';
 import NotFound from './NotFound';
 import { AlertsPanel } from '../layout/AppLayout';
 
@@ -29,7 +29,7 @@ export function SmartAlertSelect() {
                             <img src={c.avatar} alt="" width="88" height="88" loading="lazy" />
                             <div>
                                 <strong>{c.name} {c.verified && <Verified />}</strong>
-                                <span className="row-between"><span>Floor: {price(floors[c.id])}</span><Change value={c.change.day} /></span>
+                                <span className="row-between"><span>Floor: <LivePrice value={floors[c.id]}>{price(floors[c.id])}</LivePrice></span><Change value={c.change.day} /></span>
                                 <span className="muted small">{counts[c.id] ? `${counts[c.id]} active alert${counts[c.id] > 1 ? 's' : ''}` : 'No alerts yet'}</span>
                             </div>
                         </Link>
