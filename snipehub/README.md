@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# SnipeHub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+NFT portfolio management for Cronos: see all your NFTs in one place, set floor price alerts,
+keep a watchlist and compare staking rewards.
 
-## Available Scripts
+## Run it
 
-In the project directory, you can run:
+```bash
+npm install
+npm start        # http://localhost:3000
+npm run build    # production build in /build
+```
 
-### `npm start`
+`/home` is the public landing page; `/` is the app dashboard.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## What works
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+| Page | URL | Features |
+|---|---|---|
+| Landing | `/home` | Get Started, Sign Up, Connect Wallet, portfolio tabs, market chart, top collections |
+| Dashboard | `/` | Portfolio value + 30-day chart, watchlist, biggest movers |
+| My NFTs | `/nft` | Search, filter by collection, sort; connect/disconnect wallet |
+| Top Collections | `/topcollections` | Today / 7 days / 30 days, sort, search, star to watch |
+| Collection | `/collection/:id` | Stats, floor chart (7/14/30 days), items with search and “listed only”, watch, set alert |
+| NFT | `/collection/:id/nft/:tokenId` | Prices, rarity rank, traits |
+| Smart Alerts | `/smartalert` → `/smartalert/:id` | Target price (above/below) or % move (up/down/either), validation, delete, re-arm |
+| Watchlist | `/watchlist`, `/addcollection` | Add / remove collections |
+| Market Overview | `/marketoverview` | Market index, volume, gainers/losers, volume share |
+| Staking Compare | `/stakingcompare` | Sort, max lock filter, estimated yearly reward |
+| Settings | `/settings` | Display name, wallet, live prices on/off, reset demo data |
+| Support | `/support` | FAQ, contact by email |
 
-### `npm test`
+Old URLs (`/smartalert2-4`, `/topcollection2`, `/inventory`, `/setting`, `/watch2`) redirect to the new pages.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Data
 
-### `npm run build`
+Market data is **demo data** generated in `src/data/collections.js` (fixed seeds, so it is the same on
+every load). Floor prices move every few seconds (`src/store/AppStore.jsx`) and every active alert is
+checked on each move — a hit shows a toast and a notification under the bell.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Watchlist, alerts, notifications and settings are saved in the browser (`localStorage`).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To use a real API later, replace `COLLECTIONS` in `src/data/collections.js` and the price simulation in
+`AppStore.jsx`; the pages only read the fields documented there.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Structure
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+src/
+  App.js              routes (each page is lazy-loaded)
+  styles.css          all styles (no Bootstrap)
+  store/AppStore.jsx  wallet, watchlist, alerts, notifications, live prices
+  data/               demo collections and staking pools
+  layout/AppLayout.jsx sidebar, top bar, mobile menu, alerts panel
+  pages/              one file per page
+  ui/                 small shared components (charts, tabs, search, toasts)
+```
