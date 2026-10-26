@@ -501,6 +501,29 @@ a.stat:hover { box-shadow: 0 4px 18px rgba(48, 56, 246, 0.14); }
 @media (min-width: 1024px) { .tc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .tc { padding: 32px 40px 44px; } .tc-text h3 { font-size: 21px; } .tc-line { font-size: 15px; gap: 10px; } .tc-item img { width: 92px; height: 92px; } }
 @media (min-width: 1280px) { .tc-text h3 { font-size: 23px; } }
 
+/* Animated rings (Our Features). Same image three times; each copy shows one ring band
+   (radial mask) and spins around the artwork's centre (49.8% / 50.2%). */
+.ring-anim { position: relative; width: 100%; max-width: 460px; aspect-ratio: 506 / 516; margin: 0 auto; }
+.ring-anim .ring { position: absolute; inset: 0; width: 100%; height: 100%; transform-origin: 49.8% 50.2%; will-change: transform; }
+.ring-outer {
+    -webkit-mask-image: radial-gradient(circle closest-side at 49.8% 50.2%, transparent 66%, #000 70%);
+            mask-image: radial-gradient(circle closest-side at 49.8% 50.2%, transparent 66%, #000 70%);
+    animation: ring-cw 38s linear infinite;
+}
+.ring-middle {
+    -webkit-mask-image: radial-gradient(circle closest-side at 49.8% 50.2%, transparent 34%, #000 38%, #000 66%, transparent 70%);
+            mask-image: radial-gradient(circle closest-side at 49.8% 50.2%, transparent 34%, #000 38%, #000 66%, transparent 70%);
+    animation: ring-ccw 26s linear infinite;
+}
+.ring-inner {
+    -webkit-mask-image: radial-gradient(circle closest-side at 49.8% 50.2%, #000 34%, transparent 38%);
+            mask-image: radial-gradient(circle closest-side at 49.8% 50.2%, #000 34%, transparent 38%);
+    animation: ring-cw 14s linear infinite;
+}
+@keyframes ring-cw { to { transform: rotate(360deg); } }
+@keyframes ring-ccw { to { transform: rotate(-360deg); } }
+.ring-anim:hover .ring { animation-play-state: paused; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 479px) {
     .topbar { gap: 8px; padding: 0 10px; }

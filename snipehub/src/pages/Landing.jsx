@@ -197,7 +197,12 @@ export default function Landing() {
                             </li>
                         ))}
                     </ul>
-                    <img src="/assets/images/bigring.webp" alt="" width="600" height="612" loading="lazy" className="features-art" />
+                    {/* The ring artwork split into 3 layers (outer rings, petals, inner spiral) that turn in opposite directions */}
+                    <div className="features-art ring-anim" aria-hidden="true">
+                        <img src="/assets/images/bigring.webp" alt="" width="506" height="516" loading="lazy" className="ring ring-outer" />
+                        <img src="/assets/images/bigring.webp" alt="" width="506" height="516" loading="lazy" className="ring ring-middle" />
+                        <img src="/assets/images/bigring.webp" alt="" width="506" height="516" loading="lazy" className="ring ring-inner" />
+                    </div>
                 </div>
             </section>
 
