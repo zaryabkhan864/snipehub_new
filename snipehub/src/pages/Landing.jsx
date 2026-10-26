@@ -5,14 +5,71 @@ import { FaRedditAlien, FaTelegramPlane, FaTwitter, FaMedium, FaLinkedinIn } fro
 import { BsWallet2 } from 'react-icons/bs';
 import { COLLECTIONS, getCollection } from '../data/collections';
 import { useStore } from '../store/AppStore';
-import { compact, price } from '../lib/format';
-import { AreaChart, Change, Verified, Toasts } from '../ui';
+import { compact, price, pct, PERIODS } from '../lib/format';
+import { AreaChart, Change, Toasts } from '../ui';
 
 const FEATURES = [
     { icon: 'ring1.png', title: 'Wallet integration', text: 'Connect all Cronos NFT supported wallets and your crypto.org wallet to view your whole NFT portfolio on one dashboard.' },
     { icon: 'ring2.png', title: 'Floor Price Alert', text: 'Set alerts on specific NFT projects and get notified when the floor price changes by a % or reaches a price you choose.' },
     { icon: 'ring3.png', title: 'Staking comparison chart', text: 'See and compare at a glance the best projects to stake with.' },
 ];
+
+// Same look as the original landing "Top Collection" block (list on a soft blue panel,
+// 3 columns, big image, bold name, Floor / volume lines with a divider) — but the
+// Sort By and Today / 7 / 30 day buttons now actually change the list.
+const TC_SORTS = [
+    { key: 'volume', label: 'Sales Volume' },
+    { key: 'floor', label: 'Floor Price' },
+    { key: 'change', label: 'Floor Change' },
+];
+
+function LandingTopCollection() {
+    const [period, setPeriod] = useState('day');
+    const [sort, setSort] = useState('volume');
+    const list = useMemo(() => {
+        const key = { volume: (c) => c.volumes[period], floor: (c) => c.floor, change: (c) => c.change[period] }[sort];
+        return [...COLLECTIONS].sort((a, b) => key(b) - key(a));
+    }, [period, sort]);
+
+    return (
+        <section id="collections" className="tc">
+            <h2 className="l-title">Top <span className="accent">Collection</span></h2>
+            <div className="tc-controls">
+                <label className="tc-sort">
+                    <span>Sort By</span>
+                    <select value={sort} onChange={(e) => setSort(e.target.value)}>
+                        {TC_SORTS.map((o) => <option key={o.key} value={o.key}>{o.label}</option>)}
+                    </select>
+                </label>
+                <div className="tc-periods" role="group" aria-label="Period">
+                    {PERIODS.map((p) => (
+                        <button key={p.key} type="button" className={period === p.key ? 'on' : ''} aria-pressed={period === p.key} onClick={() => setPeriod(p.key)}>
+                            {p.label}
+                        </button>
+                    ))}
+                </div>
+            </div>
+            <div className="tc-grid">
+                {list.map((c) => (
+                    <Link key={c.id} to={`/collection/${c.id}`} className="tc-item">
+                        <img src={c.avatar} alt="" width="103" height="103" loading="lazy" />
+                        <div className="tc-text">
+                            <h3>{c.name}</h3>
+                            <div className="tc-line">
+                                <strong>Floor: {price(c.floor, { digits: c.floor >= 1000 ? 0 : 1 })}</strong>
+                                <span className={c.change[period] >= 0 ? 'up' : 'down'}>{pct(c.change[period])}</span>
+                            </div>
+                            <div className="tc-line">
+                                <span>volume: {compact(c.volumes[period])}</span>
+                                <span className={c.volumeChange[period] >= 0 ? 'up' : 'down'}>{pct(c.volumeChange[period])}</span>
+                            </div>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+        </section>
+    );
+}
 
 const TRACK_TABS = ['Profile', 'Transactions', 'Financials', 'Inventory'];
 
@@ -64,7 +121,6 @@ export default function Landing() {
     const navigate = useNavigate();
     const start = () => navigate('/');
     const connect = () => { dispatch({ type: 'wallet/connect' }); toast('Demo wallet connected'); navigate('/'); };
-    const top = useMemo(() => [...COLLECTIONS].sort((a, b) => b.volumes.day - a.volumes.day).slice(0, 6), []);
     const index = useMemo(() => Array.from({ length: 30 }, (_, i) => COLLECTIONS.reduce((s, c) => s + c.history[i] / c.history[0], 0) / COLLECTIONS.length * 100), []);
 
     return (
@@ -134,21 +190,7 @@ export default function Landing() {
                 </div>
             </section>
 
-            <section id="collections" className="l-section">
-                <h2 className="l-title">Top <span className="accent">Collections</span></h2>
-                <div className="collection-grid">
-                    {top.map((c) => (
-                        <Link key={c.id} to={`/collection/${c.id}`} className="collection-card">
-                            <img src={c.avatar} alt="" width="88" height="88" loading="lazy" />
-                            <div>
-                                <strong>{c.name} {c.verified && <Verified />}</strong>
-                                <span className="row-between"><span>Floor: {price(c.floor)}</span><Change value={c.change.day} /></span>
-                                <span className="row-between muted"><span>Volume: {compact(c.volumes.day)}</span><Change value={c.volumeChange.day} /></span>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-            </section>
+            <LandingTopCollection />
 
             <section className="l-section">
                 <div className="cta" style={{ backgroundImage: "linear-gradient(110deg, rgba(48, 56, 246, 0.94), rgba(86, 166, 251, 0.9)), url(/assets/images/rback.webp)" }}>
