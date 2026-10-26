@@ -28,7 +28,7 @@ function LandingTopCollection() {
     const [sort, setSort] = useState('volume');
     const list = useMemo(() => {
         const key = { volume: (c) => c.volumes[period], floor: (c) => c.floor, change: (c) => c.change[period] }[sort];
-        return [...COLLECTIONS].sort((a, b) => key(b) - key(a));
+        return [...COLLECTIONS].sort((a, b) => key(b) - key(a)).slice(0, 9);
     }, [period, sort]);
 
     return (
@@ -49,6 +49,7 @@ function LandingTopCollection() {
                     ))}
                 </div>
             </div>
+            {/* Tablet & desktop: list with image, name, floor and volume (original desktop look) */}
             <div className="tc-grid">
                 {list.map((c) => (
                     <Link key={c.id} to={`/collection/${c.id}`} className="tc-item">
@@ -64,6 +65,16 @@ function LandingTopCollection() {
                                 <span className={c.volumeChange[period] >= 0 ? 'up' : 'down'}>{pct(c.volumeChange[period])}</span>
                             </div>
                         </div>
+                    </Link>
+                ))}
+            </div>
+            {/* Phones: 3 x 3 picture cards (original phone look) */}
+            <div className="tc-tiles">
+                {list.map((c) => (
+                    <Link key={c.id} to={`/collection/${c.id}`} className="tc-tile">
+                        <img src={c.avatar} alt="" width="103" height="103" loading="lazy" />
+                        <span className="tc-tile-name">{c.name}</span>
+                        <span className={`tc-tile-change ${c.change[period] >= 0 ? 'up' : 'down'}`}>{pct(c.change[period])}</span>
                     </Link>
                 ))}
             </div>
